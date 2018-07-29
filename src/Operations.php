@@ -125,4 +125,39 @@ class Operations
 
         return $request;
     }
+
+    /**
+     * Comment Options
+     *
+     * @param string $author                 Author
+     * @param string $permalink              Permalink of the post
+     * @param string $max_accepted_payout    Max accepted payout
+     * @param int    $percent_steem_dollars  Percent SBD
+     * @param bool   $allow_votes            Allow votes
+     * @param bool   $allow_curation_rewards Allow curation rewards
+     * @param array  $extensions             Extensions
+     * @return array
+     */
+    public function comment_options(string $author, string $permalink, string $max_accepted_payout, int $percent_steem_dollars, bool $allow_votes, bool $allow_curation_rewards, array $extensions = [])
+    {
+        $request = [
+            'operations' =>
+                [
+                    [
+                        'comment_options',
+                        [
+                            'author'                 => $author,
+                            'permlink'               => $permalink,
+                            'max_accepted_payout'    => $max_accepted_payout,
+                            'percent_steem_dollars'  => $percent_steem_dollars,
+                            'allow_votes'            => $allow_votes,
+                            'allow_curation_rewards' => $allow_curation_rewards,
+                            'extensions'             => $extensions
+                        ]
+                    ]
+                ]
+        ];
+
+        return $request;
+    }
 }
